@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+import Forecast from "./Forecast";
+import TopElement from "./TopElement";
+import SearchForm from "./SearchForm";
+import Cities from "./Cities";
+import Footer from "./Footer";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-main d-flex flex-column">
+      <TopElement />
+      <div className="bottom-item shadow-lg rounded-3 px-4 py-3">
+        <div className="row">
+          <Cities />
+          <div className="col-10" id="forecast">
+            <Forecast />
+          </div>
+          <SearchForm />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
-
-export default App;

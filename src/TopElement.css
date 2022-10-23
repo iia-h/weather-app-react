@@ -1,0 +1,71 @@
+/* Top Part */
+
+.container-main {
+  margin: 8% auto;
+  max-width: 600px;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.top-item {
+  background-image: linear-gradient(
+    90deg,
+    #1e3249 0%,
+    #3e76be 45%,
+    rgb(236, 231, 231) 100%
+  );
+  color: #fff;
+}
+
+.main-temp {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.units {
+  letter-spacing: 3px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.units a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.units .active {
+  color: rgba(255, 255, 255, 0.432);
+  cursor: default;
+  text-decoration: none;
+}
+
+.units span {
+  position: relative;
+  font-size: 25px;
+  font-weight: 200;
+  top: -2px;
+}
+
+#description {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.conditions {
+  font-size: 13px;
+}
+
+.conditions span:nth-child(3) {
+  font-weight: 550;
+}
+.humidity {
+  border-right: 1.5px solid #fff;
+  padding-right: 19px;
+}
+
+.center-icon {
+  width: 20%;
+}
+
+.main-city {
+  font-size: 40px;
+}
