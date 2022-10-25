@@ -6,7 +6,7 @@ export default function SearchForm() {
       <form className="row" id="city-form">
         <div className="mb-3 col-sm-8 ">
           <input
-            type="text"
+            type="search"
             placeholder="Enter a city"
             className="form-control"
             id="city-input"

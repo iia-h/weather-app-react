@@ -10,7 +10,7 @@ import Footer from "./Footer";
 export default function App() {
   return (
     <div className="container-main d-flex flex-column">
-      <TopElement />
+      <TopElement defaultCity="Dnipro" />
       <div className="bottom-item shadow-lg rounded-3 px-4 py-3">
         <div className="row">
           <Cities />

@@ -11,6 +11,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
            className="weather-icon"
+           alt="Sunny"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
@@ -26,6 +27,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
            className="weather-icon"
+           alt="Sunny"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
@@ -41,6 +43,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
            className="weather-icon"
+           alt="Cloudy"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
@@ -56,6 +59,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
            className="weather-icon"
+           alt="Sunny"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
@@ -71,6 +75,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/windy.png"
            className="weather-icon"
+           alt="Windy"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
@@ -86,6 +91,7 @@ export default function Forecast(response) {
          <img
            src="https://ssl.gstatic.com/onebox/weather/64/rain.png"
            className="weather-icon"
+           alt="Rain"
          />
          <div className="weather-forecast-temperatures">
            <span className="weather-forecast-temperature weather-forecast-temperature-max">
