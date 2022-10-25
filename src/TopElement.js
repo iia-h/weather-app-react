@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import FormatDate from "./FormatDate";
+import FormatDay from "./FormatDay";
 import axios from "axios";
 
 import "./TopElement.css";
@@ -8,16 +10,13 @@ export default function TopElement(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      temperature: response.data.temperature.current,
-      description: response.data.condition.description,
-      humidity: response.data.temperature.humidity,
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      city: response.data.city,
-      date: "October 23, 2022",
-      day: "Sunday",
-      time: "14:45",
-      imgUrl:
-        "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png",
+      city: response.data.name,
+      date: new Date(response.data.dt * 1000),
+      imgUrl: `../images/${response.data.weather[0].icon}.png`,
     });
   }
 
@@ -63,20 +62,17 @@ export default function TopElement(props) {
             {weatherData.city}
           </div>
           <div className="date" id="date">
-            {weatherData.date}
+            <FormatDate date={weatherData.date} />
           </div>
           <div className="week-day" id="day">
-            {weatherData.day}
-          </div>
-          <div className="week-day" id="time">
-            {weatherData.time}
+            <FormatDay date={weatherData.date} />
           </div>
         </div>
       </div>
     );
   } else {
-    let apiKey = "a8b50414c10fo2c501tb709f3e5ed10a";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
+    let apiKey = "ca3de197620a1521a455c4239b865368";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
     return <p>Loading ..</p>;
   }
