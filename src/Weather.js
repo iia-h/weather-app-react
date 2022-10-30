@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import Cities from "./Cities";
 import Forecast from "./Forecast";
-
 import axios from "axios";
 
 import "./Weather.css";
@@ -19,7 +18,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
-      imgUrl: `../images/${response.data.weather[0].icon}.png`,
+      icon: response.data.weather[0].icon,
     });
   }
 
