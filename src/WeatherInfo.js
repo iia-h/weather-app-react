@@ -2,27 +2,14 @@ import React from "react";
 import FormatDate from "./FormatDate";
 import FormatDay from "./FormatDay";
 import WeatherIcon from "./WeatherIcon";
-
-import "./Weather.css";
+import WeatherTemp from "./WeatherTemp";
 
 export default function WeatherInfo(props) {
   return (
     <div className="top-item shadow-lg rounded-3 p-3 d-flex flex-row align-items-center justify-content-around">
       <div>
-        <div className="d-flex flex-row align-items-baseline">
-          <div className="main-temp" id="temp">
-            {Math.round(props.data.temperature)}
-          </div>
-          <span className="main-temp">°</span>
-          <div className="d-flex flex-row units">
-            <a href="#" id="celsius" className="active">
-              C
-            </a>
-            <span>|</span>
-            <a href="#" id="fahrenheit">
-              F
-            </a>
-          </div>
+        <div >
+          <WeatherTemp celsius={props.data.temperature} />
         </div>
         <div id="description">{props.data.description}</div>
         <div className="conditions d-flex justify-content-between">
@@ -36,7 +23,7 @@ export default function WeatherInfo(props) {
           </div>
         </div>
       </div>
-      <div className="d-flex" id="icon">
+      <div className="d-flex">
         <WeatherIcon
           code={props.data.icon}
           alt={props.data.description}
