@@ -9,9 +9,11 @@ import "./Weather.css";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
@@ -45,7 +47,7 @@ export default function Weather(props) {
           <div className="row">
             <Cities />
             <div className="col-10" id="forecast">
-              <Forecast />
+                   <Forecast coordinates={weatherData.coordinates} />
             </div>
           </div>
           <div className="col-sm-12 search-form">

@@ -1,110 +1,44 @@
-// import React from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+import ForecastDay from "./ForecastDay";
 
-export default function Forecast(response) {
+export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
+   let [forecast, setForecast] = useState(null);
+   
+   useEffect(() => {
+      setLoaded(false);
+   }, [props.coordinates]);
+   
 
-   return (
-     <div className="row text-center">
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Mon</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-           className="weather-icon"
-           alt="Sunny"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Tue</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-           className="weather-icon"
-           alt="Sunny"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Wen</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-           className="weather-icon"
-           alt="Cloudy"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Thu</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-           className="weather-icon"
-           alt="Sunny"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Fri</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/windy.png"
-           className="weather-icon"
-           alt="Windy"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-       <div className="col-2 pt-2">
-         <div className="weather-forecast-day">Sat</div>
-         <img
-           src="https://ssl.gstatic.com/onebox/weather/64/rain.png"
-           className="weather-icon"
-           alt="Rain"
-         />
-         <div className="weather-forecast-temperatures">
-           <span className="weather-forecast-temperature weather-forecast-temperature-max">
-             25°
-           </span>
-           <span className="weather-forecast-temperature weather-forecast-temperature-min">
-             13°
-           </span>
-         </div>
-       </div>
-     </div>
-   );
+  function handleResponse(response) {
+    setForecast(response.data.daily);
+    setLoaded(true);
+  }
+  if (loaded) {
+    return (
+       <div className="row text-center">
+          {forecast.map(function (dailyForecast, index) {
+             if ((index > 0) & (index < 7)) {
+               return (
+                 <div className="col-2 pt-2" key={index}>
+                   <ForecastDay data={dailyForecast} />
+                 </div>
+               );
+             }
+             return null;
+          })}
+      </div>
+    );
+  } else {
+    let apiKey = "ca3de197620a1521a455c4239b865368";
+    let lat = props.coordinates.lat;
+    let lon = props.coordinates.lon;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
+    axios.get(apiUrl).then(handleResponse);
 
+    return null;
+  }
 }
-
