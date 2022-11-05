@@ -5,12 +5,11 @@ import ForecastDay from "./ForecastDay";
 
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false);
-   let [forecast, setForecast] = useState(null);
-   
-   useEffect(() => {
-      setLoaded(false);
-   }, [props.coordinates]);
-   
+  let [forecast, setForecast] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
 
   function handleResponse(response) {
     setForecast(response.data.daily);
@@ -18,17 +17,18 @@ export default function Forecast(props) {
   }
   if (loaded) {
     return (
-       <div className="row text-center">
-          {forecast.map(function (dailyForecast, index) {
-             if ((index > 0) & (index < 7)) {
-               return (
-                 <div className="col-2 pt-2" key={index}>
-                   <ForecastDay data={dailyForecast} />
-                 </div>
-               );
-             }
-             return null;
-          })}
+      <div className="row text-center">
+        {forecast.map(function (dailyForecast, index) {
+          if ((index > 0) & (index < 7)) {
+            return (
+              <div className="col-2 pt-2" key={index}>
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     );
   } else {
