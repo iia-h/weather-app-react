@@ -1,17 +1,18 @@
 import React from "react";
-import CLEAR_DAY from "./images/01d.png";
-import CLEAR_NIGHT from "./images/01n.png";
-import PARTLY_CLOUDY_DA from "./images/02d.png";
-import PARTLY_CLOUDY_NIGHT from "./images/02n.png";
-import CLOUDY from "./images/03d.png";
-import RAIN from "./images/09d.png";
-import PARTLY_CLOUDY_DR from "./images/10d.png";
-import PARTLY_CLOUDY_NR from "./images/10n.png";
-import THUNDETSTORMS_DAY from "./images/11d.png";
-import THUNDETSTORMS_NIGHT from "./images/11n.png";
-import SNOW_DAY from "./images/13d.png";
-import SNOW_NIGHT from "./images/13n.png";
-import FOG from "./images/50d.png";
+import CLEAR_DAY from "./images/01d.svg";
+import CLEAR_NIGHT from "./images/01n.svg";
+import PARTLY_CLOUDY_DA from "./images/02d.svg";
+import PARTLY_CLOUDY_NIGHT from "./images/02n.svg";
+import CLOUDY from "./images/03d.svg";
+import BROKEN_CLOUDS from "./images/04d.svg";
+import RAIN from "./images/09d.svg";
+import PARTLY_CLOUDY_DR from "./images/10d.svg";
+import PARTLY_CLOUDY_NR from "./images/10n.svg";
+import THUNDETSTORMS_DAY from "./images/11d.svg";
+import THUNDETSTORMS_NIGHT from "./images/11n.svg";
+import SNOW_DAY from "./images/13d.svg";
+import SNOW_NIGHT from "./images/13n.svg";
+import FOG from "./images/50d.svg";
 
 
 export default function WeatherIcon(props) {
@@ -22,8 +23,8 @@ export default function WeatherIcon(props) {
     "02n": PARTLY_CLOUDY_NIGHT,
     "03d": CLOUDY,
     "03n": CLOUDY,
-    "04d": CLOUDY,
-    "04n": CLOUDY,
+    "04d": BROKEN_CLOUDS,
+    "04n": BROKEN_CLOUDS,
     "09d": RAIN,
     "09n": RAIN,
     "10d": PARTLY_CLOUDY_DR,
