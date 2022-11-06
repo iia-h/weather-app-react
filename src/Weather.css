@@ -65,3 +65,24 @@
 .main-city {
   font-size: 40px;
 }
+
+/* Cities */
+
+.bottom-item {
+  color: #09127f;
+}
+
+.cities {
+  font-weight: 600;
+  list-style-type: none;
+  padding-left: 0;
+  cursor: pointer;
+}
+
+li:hover {
+  font-weight: 700;
+}
+
+.line-vertical {
+  margin: 10px 0;
+}

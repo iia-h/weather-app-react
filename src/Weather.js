@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
-import Cities from "./Cities";
 import Forecast from "./Forecast";
 import axios from "axios";
 
@@ -53,13 +52,44 @@ export default function Weather(props) {
      navigator.geolocation.getCurrentPosition(currentLocation);
    }
 
+   // popular cities
+
+    function showKyiv() {
+      let apiKey = "ca3de197620a1521a455c4239b865368";
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=${apiKey}`;
+      axios.get(apiUrl).then(handleResponse);
+   }
+   function showLondon() {
+     let apiKey = "ca3de197620a1521a455c4239b865368";
+     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${apiKey}`;
+     axios.get(apiUrl).then(handleResponse);
+   }
+   function showMadrid() {
+     let apiKey = "ca3de197620a1521a455c4239b865368";
+     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Madrid&units=metric&appid=${apiKey}`;
+     axios.get(apiUrl).then(handleResponse);
+   }
+
+   
   if (weatherData.ready) {
     return (
       <div className="weather">
         <WeatherInfo data={weatherData} />
         <div className="bottom-item shadow-lg rounded-3 px-4 py-3">
           <div className="row">
-            <Cities />
+            <div className="col-sm-2 d-none d-sm-block">
+              <ul className="cities line-vertical">
+                <li id="kyiv" onClick={showKyiv}>
+                  Kyiv
+                </li>
+                <li id="london" onClick={showLondon}>
+                  London
+                </li>
+                <li id="madrid" onClick={showMadrid}>
+                  Madrid
+                </li>
+              </ul>
+            </div>
             <div className="col-10" id="forecast">
               <Forecast coordinates={weatherData.coordinates} />
             </div>
